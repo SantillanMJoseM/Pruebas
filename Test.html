@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<button onclick="generarFactura()">Generar Factura</button>
+
+<script>
+function generarFactura() {
+    // Crear instancia de jspdf
+    var doc = new jsPDF();
+
+    // Agregar cabecera
+    doc.setFontSize(18);
+    doc.text('Factura', 20, 20);
+
+    // Datos de la empresa
+    doc.setFontSize(12);
+    doc.text('Datos de la Empresa:', 20, 30);
+    doc.text('Nombre: Empresa XYZ', 20, 40);
+    doc.text('Dirección: Calle Principal, Ciudad', 20, 50);
+    doc.text('Teléfono: 123-456-7890', 20, 60);
+
+    // Datos del cliente
+    doc.text('Datos del Cliente:', 20, 80);
+    doc.text('Nombre: Cliente ABC', 20, 90);
+    doc.text('Dirección: Calle Cliente, Ciudad', 20, 100);
+    doc.text('Teléfono: 987-654-3210', 20, 110);
+
+    // Agregar cuerpo (detalle de productos)
+    doc.text('Detalle de Productos:', 20, 130);
+    doc.text('Producto 1: $10', 20, 140);
+    doc.text('Producto 2: $20', 20, 150);
+
+    // Agregar pie (total y detalles de medios de pago)
+    doc.text('Total: $30', 20, 170);
+    doc.text('Medios de Pago:', 20, 180);
+    doc.text('Tarjeta de Crédito: **** **** **** 1234', 20, 190);
+    doc.text('Transferencia Bancaria: Banco XYZ, Nº de Cuenta: 5678', 20, 200);
+
+    // Leyenda de la empresa
+    doc.setFontSize(10);
+    doc.text('Gracias por su compra. Vuelva pronto.', 20, 220);
+
+    // Guardar o mostrar el documento
+    doc.save('factura.pdf');
+}
+</script>
+
+</body>
+</html>
